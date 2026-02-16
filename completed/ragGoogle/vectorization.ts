@@ -38,10 +38,9 @@ for (let i = 0; i < chunkedDocuments.length; i = i + 100) {
   const batch = chunkedDocuments.slice(i, i + 100);
   
   // Google Gemini free tier has rate limit of 100 requests per min for the embedding model
-  // Wait 1.5 minute before processing each batch if you are using Google Gemini (except the first one)
-  if (i > 0) {
-    await new Promise(resolve => setTimeout(resolve, 90000));
-  }
+  // Wait 1.5 minute before processing each batch if you are using Google Gemini
+  console.log("Waiting for 90 secs due to Google rate limits.")
+  await new Promise(resolve => setTimeout(resolve, 90000));
 
   await PineconeStore.fromDocuments(batch, embeddingLLM, {
     pineconeIndex,
