@@ -1,10 +1,14 @@
 import dotenv from "dotenv";
-import { ChatOpenAI } from "@langchain/openai";
+// import { ChatOpenAI } from "@langchain/openai";
 import {ChatGoogleGenerativeAI} from "@langchain/google-genai";
 
 dotenv.config();
 
-const llm = new ChatOpenAI();
+const llm = new ChatGoogleGenerativeAI({
+  model: 'gemini-2.5-flash',
+  temperature: 0,
+  maxRetries: 2,
+});
 
 // For Google Gemini model, uncomment the following statement and comment the openAI statement above
 // Please ensure GOOGLE_API_KEY env variable is set in .env file
