@@ -1,20 +1,21 @@
 import dotenv from "dotenv";
-// import { ChatOpenAI } from "@langchain/openai";
-import {ChatGoogleGenerativeAI} from "@langchain/google-genai";
+import { ChatOpenAI } from "@langchain/openai";
+import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 
 dotenv.config();
 
-const llm = new ChatGoogleGenerativeAI({
-  model: 'gemini-2.5-flash',
-  temperature: 0,
-  maxRetries: 2,
-});
-
-// For Google Gemini model, uncomment the following statement and comment the openAI statement above
-// Please ensure GOOGLE_API_KEY env variable is set in .env file
-// const llm = new ChatGoogleGenerativeAI({
-//   model: "gemini-2.5-flash"   // if this model is not available anymore then please check another available model from google gemini api documentation
-// });
+const llm = new ChatOpenAI(
+  {
+    configuration: {
+      baseURL: "http://127.0.0.1:1234/v1",
+    },
+    apiKey: 'NA',
+    // model: 'qwen2.5-coder-3b-instruct',
+    model: 'google/gemma-3-1b',
+    // model: 'gemini-2.5-flash',
+    temperature: 0,
+    maxRetries: 2,
+  });
 
 const response = await llm.invoke(
   "Describe the importance of learning generative AI for javascript developers in 50 words."
