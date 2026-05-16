@@ -8,15 +8,15 @@ function App() {
 
   const handleSendMessage = async (e: React.FormEvent) => {
     console.log('Sending request to server...')
-    
+
     e.preventDefault();
     if (!input.trim()) return;
 
     setIsLoading(true);
-    setResponse("Thinking...");
+    setResponse("🤔 Thinking...");
 
     try {
-      
+
       const res = await fetch("http://localhost:3000/api/chat", {
         method: "POST",
         headers: {
@@ -27,7 +27,7 @@ function App() {
 
       console.log('Fetched response from server, parsing request...');
       const response = await res.json();
-      
+
       if (response.data) {
         console.log('Success: Output from LLM on server:', response);
         setResponse(response.data);
@@ -45,7 +45,7 @@ function App() {
   return (
     <div style={{ maxWidth: "700px", margin: "40px auto", padding: "0 20px", fontFamily: "sans-serif" }}>
       <h2>Gemini Playground</h2>
-      
+
       {/* Input Form */}
       <form onSubmit={handleSendMessage} style={{ display: "flex", gap: "10px", marginBottom: "30px" }}>
         <input
@@ -56,8 +56,10 @@ function App() {
           disabled={isLoading}
           style={{ flex: 1, padding: "12px", borderRadius: "6px", border: "1px solid #ccc", fontSize: "16px" }}
         />
-        <button 
-          type="submit" 
+
+        {/* Send button */}
+        <button
+          type="submit"
           disabled={isLoading}
           style={{ padding: "12px 24px", borderRadius: "6px", border: "none", backgroundColor: "#0070f3", color: "white", fontSize: "16px", cursor: "pointer" }}
         >

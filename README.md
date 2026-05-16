@@ -25,3 +25,14 @@ I am implementing:
 * **Prompt Engineering & Output Parsing:** Structuring instructions so the model returns reliable, well-formatted data.
 
 ---
+
+## 📸 User Interface
+
+Here is a look at the application in action, demonstrating the state transitions during an AI interaction loop:
+
+| State | Preview |
+| :--- | :--- |
+| **Thinking State**<br>*Triggered when a request is sent to the Express backend and the local LLM is calculating tokens.* | <img src="./images/Thinking.png" width="500" alt="Chat UI in thinking state" /> |
+| **Response State**<br>*The streaming output is completed, parsed from raw markdown, and beautifully rendered on screen.* | <img src="./images/Response.png" width="500" alt="Chat UI showing rendered markdown response" /> |
+
+---
